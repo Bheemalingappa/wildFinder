@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 
 export interface Sighting {
   species: string;
+  scientificName: string;
   confidence: number;
   imageUrl: string;
   date: string;

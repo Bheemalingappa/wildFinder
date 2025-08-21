@@ -21,7 +21,8 @@ const IdentifyAnimalInputSchema = z.object({
 export type IdentifyAnimalInput = z.infer<typeof IdentifyAnimalInputSchema>;
 
 const IdentifyAnimalOutputSchema = z.object({
-  species: z.string().describe('The identified species of the animal.'),
+  commonName: z.string().describe('The common name of the identified animal species.'),
+  scientificName: z.string().describe('The scientific name of the identified animal species.'),
   confidence: z.number().describe('The confidence level of the identification (0-1).'),
 });
 export type IdentifyAnimalOutput = z.infer<typeof IdentifyAnimalOutputSchema>;
@@ -36,11 +37,9 @@ const prompt = ai.definePrompt({
   output: {schema: IdentifyAnimalOutputSchema},
   prompt: `You are an expert zoologist. Your task is to identify the animal species in the provided image.
 
-  Analyze the following image and provide the species name and your confidence level in the identification.
+  Analyze the following image and provide the common name, scientific name, and your confidence level in the identification.
 
   Image: {{media url=photoDataUri}}
-
-  Respond with the species and confidence level.
   `,
 });
 

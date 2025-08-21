@@ -68,14 +68,15 @@ export function AnimalIdentifier() {
   const handleSaveSighting = () => {
     if (result && imageDataUri) {
         addSighting({
-            species: result.species,
+            species: result.commonName,
+            scientificName: result.scientificName,
             confidence: result.confidence,
             imageUrl: imageDataUri,
             date: new Date().toISOString(),
         });
         toast({
             title: "Sighting Saved!",
-            description: `${result.species} has been added to your sightings.`,
+            description: `${result.commonName} has been added to your sightings.`,
         });
     }
   };
@@ -147,7 +148,8 @@ export function AnimalIdentifier() {
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-semibold text-primary font-headline">Species</h3>
-                <p className="text-2xl">{result.species}</p>
+                <p className="text-2xl">{result.commonName}</p>
+                <p className="text-md italic text-muted-foreground">{result.scientificName}</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-primary font-headline">Confidence</h3>

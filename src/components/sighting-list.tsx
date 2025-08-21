@@ -63,6 +63,7 @@ export function SightingList() {
           </CardHeader>
           <CardContent className="p-4 flex-grow">
             <CardTitle className="text-xl font-headline">{sighting.species}</CardTitle>
+            <p className="text-sm text-muted-foreground italic">{sighting.scientificName}</p>
             <p className="text-sm text-muted-foreground mt-1">
                 {new Date(sighting.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>

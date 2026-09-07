@@ -1,693 +1,579 @@
-# 🚌 Grama-Yatri
-### Community-Powered Rural Transit Intelligence System
+# 🐾 WildFinder
+### AI-Powered Animal Identification & Wildlife Discovery Platform
 
-> **Smart mobility infrastructure for villages — powered by real-time community intelligence.**
+> **Identify wildlife from a photograph, explore species information, and build your personal wildlife sightings collection.**
 
-Grama-Yatri is an **AI-assisted Android rural mobility platform** designed to make village bus transportation more predictable, accessible, and efficient.
+WildFinder is an **AI-powered web application** that allows users to identify animal species from uploaded photographs.
 
-The platform addresses a common rural mobility challenge: **passengers often do not know when the next bus will arrive**, while many rural routes lack GPS-enabled fleet tracking infrastructure.
+The application combines **Next.js, TypeScript, React, Tailwind CSS, and Generative AI** to demonstrate how AI-powered image analysis can be integrated into a modern web application.
 
-Instead of requiring expensive hardware on every bus, Grama-Yatri explores a **community-powered transit model** where passengers, conductors, and administrators contribute real-time journey information.
-
----
-
-## 🚍 Why Grama-Yatri?
-
-In many rural areas:
-
-- 🚌 Bus schedules can be unpredictable
-- ⏱️ Passengers may wait for long periods
-- 📍 Live bus tracking is often unavailable
-- 📶 Internet connectivity can be limited
-- 🎓 Students depend on buses to reach schools and colleges
-- 💼 Workers depend on reliable transportation to reach jobs
-- 🏘️ Rural routes may not have modern mobility infrastructure
-
-Traditional fleet-tracking systems often depend on GPS hardware installed on buses.
-
-### Grama-Yatri explores a different approach:
-
-**Turn passengers into a distributed source of transit intelligence.**
+Users can upload an animal image, receive an AI-generated identification, explore species information, and save interesting discoveries to their personal **My Sightings** collection.
 
 ---
 
-# 💡 Core Concept
+# 🌿 Project Overview
 
-Grama-Yatri uses **crowdsourced bus movement updates**.
+Wildlife identification can be challenging for people who encounter unfamiliar animals in nature, parks, forests, or educational settings.
 
-A passenger who sees a bus can report its status through simple actions such as:
-
-- ✅ **Bus Just Passed Me**
-- 🚌 **I Am On The Bus**
-- 📍 **Bus Reached This Stop**
-
-The system can then use these events to update the route state and estimate upcoming arrival times.
+WildFinder provides a simple workflow:
 
 ```text
-Passenger Observation
+Upload Animal Photo
         ↓
-Transit Event
+AI Image Analysis
         ↓
-Firebase Realtime Database
+Species Identification
         ↓
-ETA Engine
+Common + Scientific Name
         ↓
-Updated Route Timeline
+Confidence Score
         ↓
-Passengers Receive New Information
+Save to My Sightings
 ```
 
-This creates a lightweight **rural transit intelligence network** without requiring every bus to have dedicated tracking hardware.
+The project demonstrates the integration of **multimodal AI with a production-style Next.js frontend**.
 
 ---
 
-# ✨ Key Features
+# ✨ Features
 
-## 🚍 Community-Powered Live Tracking
+## 🔍 AI-Powered Animal Identification
 
-Passengers can contribute real-time information about bus movement.
+Upload a photograph and let the AI analyze the image.
 
-- Passenger-generated bus pings
-- Route movement updates
-- Real-time synchronization
-- Current bus position/state
-- Community-generated transit information
+The identification experience provides:
+
+- 🐾 Common animal name
+- 🔬 Scientific name
+- 📊 Confidence score
+- 🤖 AI-generated identification result
 
 ---
 
-## ⏱️ Smart ETA Engine
+## 📸 Image-Based Identification
 
-The ETA system combines route information and recent movement events to estimate upcoming arrival times.
+Users can provide an animal photograph directly through the web interface.
 
 ```text
-Current Transit State
-        +
-Historical / Average Stop Travel Time
-        +
-Recent Passenger Observations
-        ↓
-Estimated Arrival Time
+User
+ │
+ ▼
+Select Image
+ │
+ ▼
+Image Processing
+ │
+ ▼
+AI Identification Flow
+ │
+ ▼
+Animal Result
 ```
-
-The architecture is designed so that more sophisticated prediction models can be introduced later.
 
 ---
 
-## 🛣️ Route Timeline
+## 📚 Animal Database
 
-Passengers can visualize the journey through a stop-by-stop timeline.
+WildFinder includes a pre-populated animal database that allows users to explore species without performing an AI identification.
+
+Users can browse available animals and open individual species pages.
 
 Example:
 
 ```text
-🚌 Current Location
-      │
-      ▼
-📍 Village A       ✓ Passed
-      │
-      ▼
-📍 Village B       🚌 Approaching
-      │
-      ▼
-📍 Village C       ⏱️ ETA
-      │
-      ▼
-📍 Village D       ⏱️ ETA
+Browse
+  │
+  ├── 🦁 Lion
+  ├── 🐘 Elephant
+  ├── 🐅 Tiger
+  ├── 🦊 Fox
+  └── 🦅 Eagle
 ```
 
 ---
 
-## 🔔 Transit Alerts
+## 🔬 Species Detail Pages
 
-The platform supports community and administrative transit alerts.
-
-Potential events include:
-
-- 🚌 Bus delays
-- ❌ Trip cancellation
-- ⚠️ Route disruption
-- 📢 Emergency broadcasts
-- 📍 Route status changes
-
----
-
-# 👥 Multi-Role Architecture
-
-Grama-Yatri is designed around multiple user roles.
-
-| Role | Responsibilities |
-|---|---|
-| 👤 Passenger | Track buses, view ETAs, report transit events |
-| 🧑‍✈️ Conductor | Share trip status and coordinate passenger information |
-| 🛠️ Admin | Manage routes, monitor operations and publish alerts |
-
-Role-based access can be enforced through the authentication and backend security layer.
-
----
-
-# 📱 Passenger Experience
-
-### Passenger Dashboard
-
-Provides access to:
-
-- Live buses
-- Saved routes
-- Upcoming trips
-- ETA information
-- Transit alerts
-
-### Live Tracking
-
-Passengers can see:
-
-- Current route state
-- Bus movement
-- Recent community updates
-- Estimated arrival information
-
-### Ticketing
-
-The architecture also supports:
-
-- QR-based tickets
-- Ticket history
-- Digital mobility transactions
-
----
-
-# 🛠️ Admin Experience
-
-The administrative layer is designed for operational visibility.
-
-### Admin capabilities
-
-- Route management
-- Fleet monitoring
-- Transit analytics
-- Passenger statistics
-- Community reports
-- Emergency announcements
-- Trip monitoring
-
----
-
-# 🧑‍✈️ Conductor Experience
-
-Conductors can act as an additional trusted source of transit information.
-
-Potential capabilities include:
-
-- Live trip status
-- Location sharing
-- Stop arrival updates
-- Passenger coordination
-- Trip completion
-
-This creates a **hybrid information model**:
+Each animal can have its own dynamic detail page.
 
 ```text
-Passenger Reports
-       +
-Conductor Updates
-       +
-Future GPS Data
+/species/[slug]
+```
+
+This provides a scalable structure for adding more species to the platform.
+
+---
+
+## ⭐ My Sightings
+
+Users can save animals they identify to a personal collection.
+
+The **My Sightings** feature allows users to revisit previous discoveries.
+
+The current implementation stores this information locally in the browser using `localStorage`.
+
+```text
+AI Identification
        ↓
-Transit Intelligence Layer
+Save Sighting
+       ↓
+Browser localStorage
+       ↓
+My Sightings
 ```
+
+No account is required for the local sightings functionality.
 
 ---
 
-# 🧠 System Architecture
+# 🧠 AI Architecture
 
-Grama-Yatri follows a modern Android architecture based on **MVVM and repository-driven data access**.
+The AI functionality is implemented using **Firebase Genkit** with Google's Gemini models.
+
+The core identification flow is located at:
 
 ```text
-┌───────────────────────────────────────┐
-│           Android Application         │
-│         Jetpack Compose UI            │
-└───────────────────┬───────────────────┘
-                    │
-                    ▼
-┌───────────────────────────────────────┐
-│              ViewModels                │
-│       UI State + Business Logic        │
-└───────────────────┬───────────────────┘
-                    │
-                    ▼
-┌───────────────────────────────────────┐
-│             Repositories               │
-│        Single Data Access Layer        │
-└───────────────┬───────────────┬───────┘
-                │               │
-                ▼               ▼
-     ┌────────────────┐   ┌────────────────┐
-     │    Firebase    │   │      Room      │
-     │ Realtime Data   │   │ Local Cache    │
-     └────────────────┘   └────────────────┘
-                │
-                ▼
-     ┌─────────────────────────┐
-     │   Transit Intelligence  │
-     │   ETA / Route Engine    │
-     └─────────────────────────┘
+src/ai/flows/identify-animal.ts
+```
+
+Conceptually:
+
+```text
+┌──────────────────────┐
+│     User Upload      │
+│    Animal Image      │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│   Animal Identifier  │
+│      Component       │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│    Genkit AI Flow    │
+│ identify-animal.ts   │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│   Gemini Multimodal  │
+│        Model         │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ Identification Result│
+│ Name + Scientific    │
+│ Name + Confidence    │
+└──────────────────────┘
 ```
 
 ---
 
-# 🏗️ Technology Stack
+# 🏗️ Application Architecture
+
+WildFinder follows the modern **Next.js App Router architecture**.
+
+```text
+┌──────────────────────────────────────┐
+│             Next.js App              │
+│                                      │
+│  Pages + Layouts + Route Structure   │
+└───────────────────┬──────────────────┘
+                    │
+                    ▼
+┌──────────────────────────────────────┐
+│             Components               │
+│                                      │
+│ Animal Identifier │ Sightings │ UI   │
+└───────────────────┬──────────────────┘
+                    │
+                    ▼
+┌──────────────────────────────────────┐
+│          React State Layer            │
+│                                      │
+│ Hooks + Context + Local State        │
+└───────────────────┬──────────────────┘
+                    │
+          ┌─────────┴─────────┐
+          ▼                   ▼
+┌─────────────────┐   ┌─────────────────┐
+│   localStorage  │   │   Genkit / AI   │
+│   Sightings      │   │ Identification  │
+└─────────────────┘   └─────────────────┘
+```
+
+---
+
+# 🛠️ Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Language | Kotlin |
-| UI | Jetpack Compose |
-| Architecture | MVVM |
-| Backend | Firebase |
-| Realtime Data | Firebase Realtime Database |
-| Authentication | Firebase Authentication |
-| Notifications | Firebase Cloud Messaging |
-| Local Database | Room |
-| Async Programming | Kotlin Coroutines |
-| Maps | Google Maps SDK |
-| Build System | Gradle Kotlin DSL |
-| Development | Android Studio |
+| Framework | Next.js |
+| Architecture | Next.js App Router |
+| Language | TypeScript |
+| Frontend | React |
+| Styling | Tailwind CSS |
+| UI Components | shadcn/ui |
+| Generative AI | Firebase Genkit |
+| AI Models | Google Gemini |
+| State Management | React Hooks + Context API |
+| Client Storage | Browser localStorage |
+| Package Management | npm |
 
 ---
 
-# 🔥 Firebase Architecture
-
-Firebase acts as the cloud synchronization layer.
-
-Conceptual data structure:
+# 📂 Project Structure
 
 ```text
-Firebase Realtime Database
+WildFinder/
 │
-├── users/
+├── src/
+│   │
+│   ├── app/
+│   │   ├── page.tsx
+│   │   ├── browse/
+│   │   ├── sightings/
+│   │   └── species/
+│   │       └── [slug]/
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   ├── animal-identifier.tsx
+│   │   └── sighting-list.tsx
+│   │
+│   ├── ai/
+│   │   └── flows/
+│   │       └── identify-animal.ts
+│   │
+│   ├── lib/
+│   │   ├── animals.ts
+│   │   └── utils.ts
+│   │
+│   └── hooks/
+│       └── use-sightings.ts
 │
-├── routes/
-│
-├── trips/
-│
-├── live_bus_locations/
-│
-├── transit_events/
-│
-├── alerts/
-│
-└── tickets/
-```
-
-### Example transit event
-
-```text
-transit_events/
-    event_id/
-        routeId
-        busId
-        userId
-        stopId
-        eventType
-        timestamp
-```
-
-This event-based model allows the system to maintain a history of community-generated transit observations.
-
----
-
-# 📶 Offline & Low-Bandwidth Design
-
-Rural applications need to consider unreliable connectivity.
-
-Grama-Yatri is designed around:
-
-- Local Room caching
-- Minimal network payloads
-- Realtime synchronization where available
-- Graceful offline states
-- Lightweight UI
-- Low-data communication
-- Synchronization when connectivity returns
-
-```text
-Internet Available
-       ↓
-Firebase ↔ Application
-       ↓
-Room Cache
-
-Internet Unavailable
-       ↓
-Room Cache
-       ↓
-User continues with available data
-       ↓
-Synchronization when connection returns
-```
-
----
-
-# 🗺️ Google Maps Integration
-
-Maps can provide the geographical foundation for:
-
-- Bus routes
-- Village stops
-- Current transit position
-- Route visualization
-- Passenger location context
-
-The architecture can support a future **GPS + crowdsourcing hybrid model**.
-
----
-
-# 🔔 Notification Architecture
-
-Firebase Cloud Messaging can be used for route-related notifications.
-
-```text
-Transit Event
-      ↓
-Backend Processing
-      ↓
-Relevant Route Users
-      ↓
-Firebase Cloud Messaging
-      ↓
-Android Notification
-```
-
-Possible notifications:
-
-- 🚌 Bus approaching
-- ⏱️ ETA changed
-- ⚠️ Route delayed
-- ❌ Trip cancelled
-- 📢 Emergency announcement
-
----
-
-# 🎫 QR Ticketing
-
-The platform architecture includes a QR-based ticketing concept.
-
-```text
-Passenger
-    ↓
-Select Journey
-    ↓
-Generate Ticket
-    ↓
-QR Code
-    ↓
-Conductor Verification
-    ↓
-Ticket Status Updated
-```
-
-This can provide a digital foundation for rural transit ticket management.
-
----
-
-# 💳 Digital Wallet
-
-The platform also includes a wallet-oriented architecture for future digital mobility transactions.
-
-Potential functionality:
-
-- Wallet balance
-- Ticket payments
-- Transaction history
-- Digital receipts
-
-> Payment functionality should be implemented with appropriate payment providers and security controls before production deployment.
-
----
-
-# 📊 Transit Intelligence
-
-The long-term vision is to evolve Grama-Yatri from a tracking application into a **rural transportation intelligence platform**.
-
-Potential intelligence capabilities include:
-
-### ETA Prediction
-
-Estimate arrival times using:
-
-- Route distance
-- Stop sequence
-- Historical travel time
-- Recent transit events
-- Current trip state
-
-### Demand Intelligence
-
-Analyze:
-
-- Frequently used routes
-- Peak travel periods
-- Passenger activity
-- Stop-level demand
-
-### Route Optimization
-
-Future ML models could identify:
-
-- Under-served villages
-- High-demand routes
-- Scheduling inefficiencies
-- Potential route improvements
-
----
-
-# 🔐 Security
-
-The platform is designed with security considerations including:
-
-- Firebase Authentication
-- Role-based authorization
-- Backend security rules
-- User-specific access controls
-- Protected transit operations
-- Secure ticket records
-
-For production deployment, Firebase Security Rules should restrict users to only the data and operations appropriate to their role.
-
----
-
-# 🧩 Project Structure
-
-```text
-GramaYatri/
-│
-├── app/
-│   └── src/
-│       └── main/
-│           ├── java/com/example/gramayatri/
-│           │
-│           ├── auth/
-│           ├── data/
-│           ├── navigation/
-│           ├── services/
-│           ├── ui/
-│           ├── utils/
-│           ├── viewmodel/
-│           └── core/
-│
-├── gradle/
-├── build.gradle.kts
-├── settings.gradle.kts
+├── public/
+├── package.json
+├── next.config.*
+├── tailwind.config.*
 └── README.md
 ```
 
 ---
 
-# 🔄 End-to-End Example
+# 🖥️ Application Pages
 
-Consider a passenger waiting at a village bus stop.
+## 🏠 Identify
+
+The primary AI-powered page.
+
+Users can:
+
+1. Upload an animal image
+2. Start identification
+3. View the AI result
+4. Save the sighting
+
+---
+
+## 🐾 Browse
+
+Explore the application's animal database.
 
 ```text
-1. Passenger waits for Bus 42
-             ↓
-2. Bus passes the passenger
-             ↓
-3. Passenger selects "Bus Just Passed Me"
-             ↓
-4. Transit event is recorded
-             ↓
-5. Firebase updates route state
-             ↓
-6. ETA engine recalculates predictions
-             ↓
-7. Route timeline updates
-             ↓
-8. Other passengers see the updated information
+Browse Animals
+      ↓
+Species Cards
+      ↓
+Select Animal
+      ↓
+Species Details
 ```
 
-The goal is to convert individual observations into **shared transportation intelligence**.
+---
+
+## ⭐ My Sightings
+
+View previously saved animal identifications.
+
+Sightings are stored locally in the browser.
 
 ---
 
-# 📈 Performance Goals
+## 🔬 Species Details
 
-| Metric | Target |
-|---|---|
-| App startup | < 3 seconds* |
-| Realtime synchronization | < 2 seconds* |
-| Network usage | Low-data optimized |
-| Offline support | Supported |
-| UI responsiveness | Smooth |
-| Scalability | Designed for incremental expansion |
+Dynamic species pages use:
 
-\*Targets depend on device performance, network conditions, Firebase configuration, and implementation details.
+```text
+/species/[slug]
+```
+
+This allows each animal to have a dedicated route.
 
 ---
 
-# 🎯 Social Impact
+# 🔄 End-to-End User Flow
 
-Grama-Yatri is designed around four major impact areas.
+```text
+              ┌──────────────┐
+              │     User     │
+              └──────┬───────┘
+                     │
+                     ▼
+             Upload Photograph
+                     │
+                     ▼
+          Animal Identifier UI
+                     │
+                     ▼
+              Genkit AI Flow
+                     │
+                     ▼
+             Gemini Analysis
+                     │
+                     ▼
+        ┌────────────────────────┐
+        │ Identification Result  │
+        │                        │
+        │ Common Name            │
+        │ Scientific Name        │
+        │ Confidence             │
+        └───────────┬────────────┘
+                    │
+             ┌──────┴──────┐
+             │             │
+             ▼             ▼
+         Explore        Save
+          Species       Sighting
+             │             │
+             │             ▼
+             │        localStorage
+             │             │
+             └──────┬──────┘
+                    ▼
+              My Sightings
+```
 
-### 🚶 Better Mobility
+---
 
-Reduce uncertainty and unnecessary waiting at rural bus stops.
+# 📊 AI Identification Result
 
-### 🎓 Education
+A typical result can be represented conceptually as:
 
-Help students better plan transportation to schools and colleges.
+```text
+┌─────────────────────────────┐
+│ 🐾 Animal Identification    │
+│                             │
+│ Common Name: Tiger          │
+│ Scientific Name: Panthera   │
+│ Confidence: 94%             │
+│                             │
+│ [ Save Sighting ]           │
+└─────────────────────────────┘
+```
 
-### 💼 Employment
+> AI confidence scores should be treated as model estimates rather than guarantees of biological identification accuracy.
 
-Improve transportation predictability for workers and rural commuters.
+---
 
-### 🌾 Rural Digital Inclusion
+# 💾 Local Data Architecture
 
-Bring modern mobility intelligence to communities that may not have access to conventional fleet-tracking infrastructure.
+The current **My Sightings** implementation uses browser storage.
+
+```text
+React Application
+       │
+       ▼
+useSightings Hook
+       │
+       ▼
+localStorage
+       │
+       ├── Save
+       ├── Read
+       └── Remove
+```
+
+This makes the feature simple and lightweight without requiring user authentication or a database.
+
+---
+
+# 🎨 UI & UX
+
+The application uses:
+
+- Responsive layouts
+- Tailwind CSS
+- shadcn/ui components
+- Reusable React components
+- Dynamic routing
+- Mobile-friendly interfaces
+- Accessible UI patterns
+
+The design is intended to make wildlife discovery simple for both desktop and mobile users.
+
+---
+
+# 📱 Responsive Design
+
+WildFinder is designed to work across:
+
+```text
+Desktop
+   │
+   ├── Large displays
+   │
+   ▼
+Tablet
+   │
+   ▼
+Mobile
+```
+
+The interface adapts to different screen sizes while keeping the identification workflow straightforward.
+
+---
+
+# ⚡ Application Workflow
+
+```text
+                    WildFinder
+                        │
+          ┌─────────────┼─────────────┐
+          ▼             ▼             ▼
+      Identify       Browse       Sightings
+          │             │             │
+          ▼             ▼             ▼
+       Upload        Species       Saved
+       Image         Database      Animals
+          │             │             │
+          ▼             ▼             ▼
+       GenAI        Detail Page   localStorage
+          │
+          ▼
+       Result
+```
+
+---
+
+# 🔐 Privacy Considerations
+
+The current sightings feature is client-side.
+
+- Sightings are stored in the user's browser
+- No account is required for saved sightings
+- Local storage data remains tied to the browser/device
+- Clearing browser storage can remove saved sightings
+
+If the project is extended with cloud accounts, additional authentication and privacy controls should be introduced.
 
 ---
 
 # 🚀 Future Roadmap
 
-### Phase 1 — Core Platform
+## Phase 1 — Current Platform
 
-- [x] Android application foundation
-- [x] Kotlin + Jetpack Compose
-- [x] MVVM architecture
-- [x] Firebase integration
-- [x] Authentication
-- [x] Route management foundation
+- [x] Next.js application
+- [x] TypeScript
+- [x] Responsive UI
+- [x] AI animal identification
+- [x] Common name identification
+- [x] Scientific name identification
+- [x] Confidence score
+- [x] Animal database
+- [x] Species detail pages
+- [x] Personal sightings
+- [x] Local persistence
 
-### Phase 2 — Transit Intelligence
+## Phase 2 — Wildlife Intelligence
 
-- [ ] Community transit events
-- [ ] Advanced ETA engine
-- [ ] Route confidence scoring
-- [ ] Historical travel-time analysis
-- [ ] Improved route visualization
+- [ ] Improved species classification
+- [ ] Animal characteristic detection
+- [ ] Habitat information
+- [ ] Geographic distribution
+- [ ] Similar-species comparison
+- [ ] Identification history
 
-### Phase 3 — Intelligent Mobility
+## Phase 3 — Community Wildlife Platform
 
-- [ ] ML-based ETA prediction
-- [ ] Demand prediction
-- [ ] Route optimization
-- [ ] Anomaly detection
-- [ ] Transit analytics
+- [ ] User accounts
+- [ ] Cloud-synchronized sightings
+- [ ] Public wildlife observations
+- [ ] Location-based sightings
+- [ ] Community verification
+- [ ] Wildlife observation maps
 
-### Phase 4 — Rural Mobility Network
+## Phase 4 — Advanced AI
 
-- [ ] GPS + crowdsourced hybrid tracking
-- [ ] Kannada language support
-- [ ] Voice-assisted navigation
-- [ ] Offline-first synchronization
-- [ ] Multi-village deployment
-- [ ] Public transit analytics
-
----
-
-# 🧪 Success Metrics
-
-The project can be evaluated using measurable indicators such as:
-
-- ETA prediction accuracy
-- Average synchronization latency
-- Bus-report validation rate
-- Network data consumption
-- Offline recovery success
-- Active users per route
-- Transit events per trip
-- Reduction in passenger waiting uncertainty
+- [ ] Multi-animal detection
+- [ ] Image quality assessment
+- [ ] Similar-species ranking
+- [ ] Habitat-aware identification
+- [ ] AI-generated educational explanations
+- [ ] Wildlife conservation insights
 
 ---
 
-# 🌍 Long-Term Vision
+# 🌍 Potential Impact
 
-Grama-Yatri is not intended to be only a bus-tracking application.
+WildFinder can evolve beyond simple image classification into an educational and citizen-science platform.
 
-The larger vision is to build a **digital intelligence layer for rural transportation**.
+### 🎓 Education
 
-```text
-Community
-    │
-    ├── Passenger Observations
-    ├── Conductor Updates
-    ├── GPS Data
-    └── Historical Trips
-             ↓
-      Transit Intelligence
-             ↓
-     ┌───────┼────────┐
-     ↓       ↓        ↓
-    ETA    Alerts   Analytics
-     │       │        │
-     └───────┼────────┘
-             ↓
-       Better Mobility
-             ↓
-      Better Rural Access
-```
+Help students learn:
+
+- Animal species
+- Scientific names
+- Wildlife characteristics
+- Biodiversity
+
+### 🌿 Wildlife Awareness
+
+Make wildlife information more accessible to everyday users.
+
+### 🔬 Citizen Science
+
+A future community-based version could allow users to contribute wildlife observations for research and conservation projects.
+
+### 🗺️ Biodiversity Intelligence
+
+Aggregated, appropriately governed sightings could eventually provide insights into wildlife distribution and observation patterns.
 
 ---
 
-# 💻 Development Approach
+# 🧪 Evaluation Metrics
 
-The project combines:
+Future versions can be evaluated using:
 
-- Modern Android development
-- Cloud-based realtime systems
-- Offline-capable data architecture
-- Geospatial technologies
-- Event-driven transit updates
-- AI-assisted development workflows
-
-The system is designed to be modular so that increasingly sophisticated intelligence can be introduced without replacing the core Android architecture.
-
----
-
-# 🤝 Community-Powered Mobility
-
-The central idea behind Grama-Yatri is simple:
-
-> **A village does not always need expensive infrastructure to become digitally connected. Its community can become part of the infrastructure.**
-
-By combining community-generated information, realtime cloud synchronization, mobile technology, and intelligent prediction, Grama-Yatri explores a scalable approach to rural mobility.
+| Metric | Purpose |
+|---|---|
+| Identification accuracy | Measure species prediction quality |
+| Confidence calibration | Compare confidence with actual correctness |
+| AI response time | Measure user experience |
+| Successful identification rate | Measure usability |
+| Sightings saved | Measure engagement |
+| Mobile performance | Measure accessibility |
+| AI failure rate | Identify difficult image cases |
 
 ---
 
-# 📸 Application Screens
+# ⚠️ AI Identification Disclaimer
 
-Planned / implemented application screens include:
+WildFinder is an AI-assisted identification tool.
 
-- Splash Screen
-- Onboarding
-- Authentication
-- Passenger Dashboard
-- Live Tracking
-- Route Timeline
-- Transit Alerts
-- Admin Dashboard
-- Fleet Monitoring
-- QR Scanner
-- Ticket History
-- Wallet
+AI predictions may be incorrect, particularly when:
+
+- The animal is partially visible
+- The photograph is blurry
+- Lighting is poor
+- Multiple similar species exist
+- The image does not contain an animal
+- The species is uncommon or outside the model's knowledge
+
+For scientific, conservation, medical, legal, or safety-critical decisions, identification should be verified using appropriate expert or authoritative sources.
 
 ---
 
@@ -695,53 +581,122 @@ Planned / implemented application screens include:
 
 ## Prerequisites
 
-- Android Studio
-- JDK compatible with the project configuration
-- Android SDK
-- Firebase project
-- Google Maps API configuration
+Make sure you have:
 
-## Setup
+- Node.js
+- npm
+- A configured Genkit environment
+- Required Gemini/AI configuration
+
+## Installation
 
 ```bash
 git clone <repository-url>
-cd GramaYatri
+
+cd WildFinder
+
+npm install
 ```
 
-Open the project in Android Studio and configure the required Firebase and Maps credentials.
+## Development
 
-Then build and run the application on an Android device or emulator.
+```bash
+npm run dev
+```
 
-> Never commit Firebase credentials, API keys, signing keys, or other secrets to the repository.
+Then open the local development server in your browser.
+
+---
+
+# 🔧 Development Architecture
+
+The project separates major responsibilities into dedicated layers:
+
+```text
+UI
+ ↓
+React Components
+ ↓
+Hooks / Context
+ ↓
+Application Logic
+ ↓
+Genkit AI Flow
+ ↓
+Gemini Model
+```
+
+This separation makes the project easier to maintain and extend.
+
+---
+
+# 💡 Engineering Highlights
+
+WildFinder demonstrates several practical software-engineering concepts:
+
+- Modern Next.js App Router
+- Type-safe TypeScript development
+- Component-based React architecture
+- Reusable UI components
+- AI integration with Genkit
+- Multimodal AI interaction
+- Dynamic routing
+- Client-side persistence
+- Responsive web design
+- Separation of AI logic from UI
+- Modular project structure
+
+---
+
+# 🌟 What Makes WildFinder Interesting?
+
+The project combines three layers:
+
+```text
+┌────────────────────────────┐
+│       Modern Web App       │
+│     Next.js + React        │
+└──────────────┬─────────────┘
+               │
+               ▼
+┌────────────────────────────┐
+│       AI Intelligence      │
+│     Genkit + Gemini        │
+└──────────────┬─────────────┘
+               │
+               ▼
+┌────────────────────────────┐
+│     Wildlife Discovery     │
+│   Species + Sightings      │
+└────────────────────────────┘
+```
+
+This makes WildFinder a practical demonstration of **AI + full-stack web development + domain-focused user experience**.
+
+---
+
+# 📌 Project Status
+
+**Status:** 🚧 Active / Demonstration Project
+
+The current application focuses on AI-powered animal identification, species discovery, and local sightings management.
+
+The roadmap describes potential extensions rather than guaranteed current functionality.
 
 ---
 
 # 📜 License
 
-This project is developed for **educational, innovation, and social-impact purposes**.
-
----
-
-# 🙏 Acknowledgements
-
-Built with technologies and communities including:
-
-- Kotlin
-- Jetpack Compose
-- Firebase
-- Google Maps Platform
-- Android ecosystem
-- Open-source community
-- AI-assisted development tools
+This project is developed for **educational, experimentation, and portfolio purposes**.
 
 ---
 
 <div align="center">
 
-# 🌾 Smart Mobility for Every Village
+# 🐾 WildFinder
 
-### Built with ❤️ using Kotlin + Android + Firebase + GenAI
+### Discover. Identify. Learn.
 
-**Grama-Yatri — Turning community knowledge into rural mobility intelligence.**
+**AI-powered wildlife identification built with Next.js + TypeScript + GenAI.**
 
 </div>
